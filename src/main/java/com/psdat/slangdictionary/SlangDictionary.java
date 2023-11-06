@@ -97,6 +97,9 @@ public class SlangDictionary {
     public List<String> queryFromSlang(String slang, boolean addToHistory) {
         slang = slang.trim().toUpperCase();
         if (addToHistory) {
+            if (history.size() > 50) {
+                history.removeLast();
+            }
             history.addFirst(slang);
             saveHistory();
         }
@@ -140,8 +143,17 @@ public class SlangDictionary {
         dictionary.put(slang, definitions_set);
         return saveDictionary();
     }
+    public boolean editSlang(String oldSlang, String newSlang) {
+        if (!dictionary.containsKey(oldSlang)) return false;
+        List<String> definitions = queryFromSlang(oldSlang);
+        dictionary.remove(oldSlang);
+        addSlang(newSlang, definitions);
+        return true;
+    }
     public boolean deleteSlang(String slang) {
-        return dictionary.remove(slang) == null;
+        if (dictionary.remove(slang) == null) return false;
+        saveDictionary();
+        return true;
     }
     public boolean factoryReset() {
         importDictionary(DEFAULT_BASE_DATA_FILE);

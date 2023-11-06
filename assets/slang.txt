@@ -5324,7 +5324,6 @@ PS3`PlayStation 3
 PS4`PlayStation 4
 PSA`Publice Service Announcement
 PSB`Please See Below
-PSD`Photoshop Data file
 PSH`Dismissive expression
 PSHAW`scepticism|disbelief
 PSI`Greek letter|Pounds per Square Inch (pressure)
