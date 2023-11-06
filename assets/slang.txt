@@ -2552,7 +2552,7 @@ GOWM`Go Out With Me
 GOY`Non-Jewish person
 GP`General Principle
 GPA`Grade-Point Average
-GPC`Generic Pack of Cigarettes|Get/Post/Cookie
+GPC`Get/Post/Cookie |Generic Pack of Cigarettes
 GPL`General Public License
 GPOY`Gratuitous Picture Of Yourself
 GPOYW`Gratuitous Picture Of Yourself Wednesday
@@ -5324,6 +5324,7 @@ PS3`PlayStation 3
 PS4`PlayStation 4
 PSA`Publice Service Announcement
 PSB`Please See Below
+PSD`Photoshop Data file
 PSH`Dismissive expression
 PSHAW`scepticism|disbelief
 PSI`Greek letter|Pounds per Square Inch (pressure)

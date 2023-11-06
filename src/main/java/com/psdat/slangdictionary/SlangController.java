@@ -54,6 +54,11 @@ public class SlangController {
     private AnchorPane edit_slang_pane;
     @FXML
     private AnchorPane delete_slang_pane;
+    @FXML
+    private AnchorPane reset_slang_pane;
+    @FXML
+    private AnchorPane random_slang_pane;
+
     // Lookup Slang
     @FXML
     private TextField lookup_slang_inp;
@@ -91,6 +96,11 @@ public class SlangController {
     // Delete Slang
     @FXML
     private TextField delete_slang_inp;
+    // Random Slang
+    @FXML
+    private Label random_slang_text;
+    @FXML
+    private Label random_slang_def;
     private SlangDictionary dict;
 
     public void initialize() throws IOException {
@@ -111,6 +121,8 @@ public class SlangController {
         add_slang_pane.setVisible(false);
         edit_slang_pane.setVisible(false);
         delete_slang_pane.setVisible(false);
+        reset_slang_pane.setVisible(false);
+        random_slang_pane.setVisible(false);
 
         if (actionEvent.getSource() == lookup_slang_btn) {
             lookup_slang_pane.setVisible(true);
@@ -129,6 +141,15 @@ public class SlangController {
         }
         else if (actionEvent.getSource() == delete_slang_btn) {
             delete_slang_pane.setVisible(true);
+        }
+        else if (actionEvent.getSource() == reset_default_btn) {
+            reset_slang_pane.setVisible(true);
+        }
+        else if (actionEvent.getSource() == random_slang_btn) {
+            random_slang_pane.setVisible(true);
+            String ranSlang = dict.getRandomSlang();
+            random_slang_text.setText(ranSlang);
+            random_slang_def.setText(String.join(" | ", dict.queryFromSlang(ranSlang)));
         }
     }
 
@@ -220,6 +241,22 @@ public class SlangController {
             }
         }
     }
-
+    @FXML
+    public void resetSlang() {
+        Alert alert;
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to reset the slang word database?");
+        alert.getButtonTypes().clear();
+        alert.getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.isPresent()) {
+            if (option.get().equals(ButtonType.YES)) {
+                if (dict.factoryReset()) popUpAlert("Success", "Successfully reset slang word database!");
+                else popUpAlert("Error", "Something went wrong while resetting slang");
+            }
+        }
+    }
 
 }

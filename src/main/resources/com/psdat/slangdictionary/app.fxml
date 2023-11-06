@@ -75,7 +75,7 @@
                   <HBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0">
                      <children>
                      
-                                      <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="SLANG DICTIONARY" textAlignment="CENTER" textFill="#4e6975">
+                                      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="SLANG DICTIONARY" textAlignment="CENTER" textFill="#4e6975">
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>
@@ -91,7 +91,7 @@
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText1" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Lookup Slang Word" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Lookup Slang Word" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -121,7 +121,7 @@
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText11" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Lookup Definition" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Lookup Definition" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -152,7 +152,7 @@
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText111" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="History" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="History" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -177,7 +177,7 @@
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText1111" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Add New Slang" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Add New Slang" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -217,7 +217,7 @@
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText11111" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Edit Slang Word" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Edit Slang Word" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -253,11 +253,11 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="delete_slang_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
+            <AnchorPane fx:id="delete_slang_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label fx:id="welcomeText111111" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Delete Slang Word" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Delete Slang Word" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -278,6 +278,81 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Button>
+                        <Region prefHeight="100.0" prefWidth="314.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="reset_slang_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="379.0" style="-fx-background-radius: 10;" text="Reset To Default" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="41.0" prefWidth="320.0" />
+                        <Button fx:id="delete_slang_submit_btn1" alignment="CENTER" minWidth="250.0" onAction="#resetSlang" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="RESET" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Region prefHeight="100.0" prefWidth="314.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="random_slang_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="On This Day Slang Word" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="41.0" prefWidth="320.0" />
+                        <Label fx:id="random_slang_text" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="placeholder" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="random_slang_def" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="placeholder" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="314.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="random_slang_pane1" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Quiz" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="41.0" prefWidth="320.0" />
                         <Region prefHeight="100.0" prefWidth="314.0" />
                      </children>
                   </VBox>
