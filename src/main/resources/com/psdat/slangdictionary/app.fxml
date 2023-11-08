@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -15,62 +16,10 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane style="-fx-background-color: #A0C3D2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psdat.slangdictionary.SlangController">
-   <left>
-      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #A0C3D2;" BorderPane.alignment="CENTER">
-        <padding>
-          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-        </padding>
-        <Button fx:id="lookup_slang_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Lookup Slang" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="lookup_def_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Lookup Definition" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="history_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="History" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="add_new_slang_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Add New Slang" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="edit_slang_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Edit Slang" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="delete_slang_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Delete Slang" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="reset_default_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Reset To Default" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="random_slang_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Random Slang" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-         <Button fx:id="quiz_btn" alignment="CENTER" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Quiz" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="18.0" />
-            </font>
-         </Button>
-      </VBox>
-   </left>
    <center>
       <AnchorPane prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="title_pane" minWidth="-Infinity" prefWidth="600.0" visible="false">
+            <AnchorPane fx:id="title_pane" minWidth="-Infinity" prefWidth="600.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0">
                      <children>
@@ -340,11 +289,11 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="random_slang_pane1" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
+            <AnchorPane fx:id="slang_quiz_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
                <children>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Quiz" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Slang Quiz" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -352,8 +301,116 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </Label>
-                        <Region prefHeight="41.0" prefWidth="320.0" />
-                        <Region prefHeight="100.0" prefWidth="314.0" />
+                        <Region prefHeight="16.0" prefWidth="320.0" />
+                        <Label fx:id="slang_quiz_question" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Question" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="238.0" prefWidth="414.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="slang_quiz_btn_a" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#slangQuizChooseA" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="A" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="slang_quiz_btn_b" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#slangQuizChooseB" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="B" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="slang_quiz_btn_c" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#slangQuizChooseC" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="C" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="slang_quiz_btn_d" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#slangQuizChooseD" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="D" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Label fx:id="slang_quiz_result" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Question" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="23.0" prefWidth="320.0" />
+                        <Button fx:id="slang_quiz_next" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="170.0" onAction="#generateSlangQuiz" prefHeight="48.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="NEXT" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="def_quiz_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="600.0" prefWidth="600.0" spacing="10.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Definition Quiz" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="16.0" prefWidth="320.0" />
+                        <Label fx:id="def_quiz_question" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Question" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="238.0" prefWidth="414.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="def_quiz_btn_a" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#defQuizChooseA" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="A" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="def_quiz_btn_b" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#defQuizChooseB" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="B" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="def_quiz_btn_c" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#defQuizChooseC" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="C" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="def_quiz_btn_d" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="250.0" onAction="#defQuizChooseD" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="D" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Label fx:id="def_quiz_result" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="454.0" style="-fx-background-radius: 10;" text="Question" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Region prefHeight="23.0" prefWidth="320.0" />
+                        <Button fx:id="def_quiz_next" alignment="CENTER" contentDisplay="CENTER" maxWidth="500.0" minWidth="170.0" onAction="#generateDefQuiz" prefHeight="48.0" prefWidth="170.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="NEXT" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -361,4 +418,64 @@
          </children>
       </AnchorPane>
    </center>
+   <left>
+      <ScrollPane hbarPolicy="NEVER" minWidth="300.0" prefHeight="600.0" prefWidth="298.0" vbarPolicy="ALWAYS" BorderPane.alignment="TOP_CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="300.0" style="-fx-background-color: #A0C3D2;">
+               <children>
+                 <Button fx:id="lookup_slang_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="20.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Lookup Slang" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="lookup_def_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="88.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Lookup Definition" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="history_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="156.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="History" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="add_new_slang_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="224.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Add New Slang" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="edit_slang_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="292.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Edit Slang" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="delete_slang_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="360.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Delete Slang" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reset_default_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="428.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Reset To Default" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="random_slang_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="496.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Random Slang" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="slang_quiz_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="564.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Slang Quiz" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="def_quiz_btn" alignment="CENTER" layoutX="24.799999237060547" layoutY="632.0" minWidth="250.0" onAction="#changePane" prefHeight="48.0" style="-fx-background-radius: 10; -fx-background-color: #4E6975; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 5, 0, 0, 0); -fx-cursor: hand;" text="Definition Quiz" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </left>
 </BorderPane>

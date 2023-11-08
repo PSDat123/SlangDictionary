@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
+import javafx.scene.paint.Color;
+
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -14,31 +16,24 @@ public class SlangController {
     // buttons
     @FXML
     private Button lookup_slang_btn;
-
     @FXML
     private Button lookup_def_btn;
-
     @FXML
     private Button history_btn;
-
     @FXML
     private Button add_new_slang_btn;
-
     @FXML
     private Button edit_slang_btn;
-
     @FXML
     private Button delete_slang_btn;
-
     @FXML
     private Button reset_default_btn;
-
     @FXML
     private Button random_slang_btn;
-
     @FXML
-    private Button quiz_btn;
-
+    private Button slang_quiz_btn;
+    @FXML
+    private Button def_quiz_btn;
     // panes
     @FXML
     private AnchorPane title_pane;
@@ -58,7 +53,10 @@ public class SlangController {
     private AnchorPane reset_slang_pane;
     @FXML
     private AnchorPane random_slang_pane;
-
+    @FXML
+    private AnchorPane slang_quiz_pane;
+    @FXML
+    private AnchorPane def_quiz_pane;
     // Lookup Slang
     @FXML
     private TextField lookup_slang_inp;
@@ -86,8 +84,7 @@ public class SlangController {
     private TextField add_slang_inp_slang;
     @FXML
     private TextField add_slang_inp_def;
-//    @FXML
-//    private Button add_slang_submit_btn;
+
     // Edit Slang
     @FXML
     private TextField edit_slang_inp_old;
@@ -101,8 +98,35 @@ public class SlangController {
     private Label random_slang_text;
     @FXML
     private Label random_slang_def;
+    // Slang Quiz
+    @FXML
+    private Label slang_quiz_question;
+    @FXML
+    private Button slang_quiz_btn_a;
+    @FXML
+    private Button slang_quiz_btn_b;
+    @FXML
+    private Button slang_quiz_btn_c;
+    @FXML
+    private Button slang_quiz_btn_d;
+    @FXML
+    private Label slang_quiz_result;
+    // Definition Quiz
+    @FXML
+    private Label def_quiz_question;
+    @FXML
+    private Button def_quiz_btn_a;
+    @FXML
+    private Button def_quiz_btn_b;
+    @FXML
+    private Button def_quiz_btn_c;
+    @FXML
+    private Button def_quiz_btn_d;
+    @FXML
+    private Label def_quiz_result;
+    private SlangQuiz currentSlangQuiz = null;
+    private SlangQuiz currentDefQuiz = null;
     private SlangDictionary dict;
-
     public void initialize() throws IOException {
         dict = new SlangDictionary();
         updateHistory();
@@ -123,6 +147,8 @@ public class SlangController {
         delete_slang_pane.setVisible(false);
         reset_slang_pane.setVisible(false);
         random_slang_pane.setVisible(false);
+        slang_quiz_pane.setVisible(false);
+        def_quiz_pane.setVisible(false);
 
         if (actionEvent.getSource() == lookup_slang_btn) {
             lookup_slang_pane.setVisible(true);
@@ -151,6 +177,18 @@ public class SlangController {
             random_slang_text.setText(ranSlang);
             random_slang_def.setText(String.join(" | ", dict.queryFromSlang(ranSlang)));
         }
+        else if (actionEvent.getSource() == slang_quiz_btn) {
+            slang_quiz_pane.setVisible(true);
+            if (currentSlangQuiz == null) {
+                generateSlangQuiz();
+            }
+        }
+        else if (actionEvent.getSource() == def_quiz_btn) {
+            def_quiz_pane.setVisible(true);
+            if (currentDefQuiz == null) {
+                generateDefQuiz();
+            }
+        }
     }
 
     @FXML
@@ -168,7 +206,6 @@ public class SlangController {
         slang_value_col.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
         slang_table.getItems().setAll(dict.queryFromDefinition(def));
     }
-
     private void popUpAlert(String status, String message) {
         Alert alert;
         alert = new Alert(Alert.AlertType.INFORMATION);
@@ -207,7 +244,6 @@ public class SlangController {
             popUpAlert("Success", "Successfully added slang word!");
         }
     }
-
     @FXML
     public void editSlang() {
         String oldSlang = edit_slang_inp_old.getText().trim();
@@ -217,7 +253,6 @@ public class SlangController {
         else if (dict.editSlang(oldSlang, newSlang)) popUpAlert("Success", "Successfully edited slang word!");
         else popUpAlert("Error", "Something went wrong");
     }
-
     @FXML
     public void deleteSlang() {
         String slang = delete_slang_inp.getText().trim();
@@ -258,5 +293,122 @@ public class SlangController {
             }
         }
     }
-
+    @FXML
+    public void generateSlangQuiz() {
+        slang_quiz_result.setVisible(false);
+        currentSlangQuiz = dict.getSlangQuiz(4);
+        List<String> answers = currentSlangQuiz.getAnswers();
+        slang_quiz_question.setText(currentSlangQuiz.getQuestion());
+        slang_quiz_btn_a.setText(answers.get(0));
+        slang_quiz_btn_b.setText(answers.get(1));
+        slang_quiz_btn_c.setText(answers.get(2));
+        slang_quiz_btn_d.setText(answers.get(3));
+    }
+    @FXML
+    public void slangQuizChooseA() {
+        slang_quiz_result.setVisible(true);
+        if (currentSlangQuiz.checkAnswer(0)) {
+            slang_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            slang_quiz_result.setText("CORRECT!");
+        }
+        else {
+            slang_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            slang_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void slangQuizChooseB() {
+        slang_quiz_result.setVisible(true);
+        if (currentSlangQuiz.checkAnswer(1)) {
+            slang_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            slang_quiz_result.setText("CORRECT!");
+        }
+        else {
+            slang_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            slang_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void slangQuizChooseC() {
+        slang_quiz_result.setVisible(true);
+        if (currentSlangQuiz.checkAnswer(2)) {
+            slang_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            slang_quiz_result.setText("CORRECT!");
+        }
+        else {
+            slang_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            slang_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void slangQuizChooseD() {
+        slang_quiz_result.setVisible(true);
+        if (currentSlangQuiz.checkAnswer(3)) {
+            slang_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            slang_quiz_result.setText("CORRECT!");
+        }
+        else {
+            slang_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            slang_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void generateDefQuiz() {
+        def_quiz_result.setVisible(false);
+        currentDefQuiz = dict.getDefinitionQuiz(4);
+        List<String> answers = currentDefQuiz.getAnswers();
+        def_quiz_question.setText(currentDefQuiz.getQuestion());
+        def_quiz_btn_a.setText(answers.get(0));
+        def_quiz_btn_b.setText(answers.get(1));
+        def_quiz_btn_c.setText(answers.get(2));
+        def_quiz_btn_d.setText(answers.get(3));
+    }
+    @FXML
+    public void defQuizChooseA() {
+        def_quiz_result.setVisible(true);
+        if (currentDefQuiz.checkAnswer(0)) {
+            def_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            def_quiz_result.setText("CORRECT!");
+        }
+        else {
+            def_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            def_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void defQuizChooseB() {
+        def_quiz_result.setVisible(true);
+        if (currentDefQuiz.checkAnswer(1)) {
+            def_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            def_quiz_result.setText("CORRECT!");
+        }
+        else {
+            def_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            def_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void defQuizChooseC() {
+        def_quiz_result.setVisible(true);
+        if (currentDefQuiz.checkAnswer(2)) {
+            def_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            def_quiz_result.setText("CORRECT!");
+        }
+        else {
+            def_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            def_quiz_result.setText("WRONG!");
+        }
+    }
+    @FXML
+    public void defQuizChooseD() {
+        def_quiz_result.setVisible(true);
+        if (currentDefQuiz.checkAnswer(3)) {
+            def_quiz_result.setTextFill(Color.color(0, 0.9, 0));
+            def_quiz_result.setText("CORRECT!");
+        }
+        else {
+            def_quiz_result.setTextFill(Color.color(0.9, 0, 0));
+            def_quiz_result.setText("WRONG!");
+        }
+    }
 }
