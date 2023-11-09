@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -21,10 +20,10 @@
          <children>
             <AnchorPane fx:id="title_pane" minWidth="-Infinity" prefWidth="600.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0">
+                  <VBox alignment="TOP_CENTER" layoutX="122.0" layoutY="259.0" prefHeight="122.0" prefWidth="328.0">
                      <children>
                      
-                                      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="SLANG DICTIONARY" textAlignment="CENTER" textFill="#4e6975">
+                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="SLANG DICTIONARY" textAlignment="CENTER" textFill="#4e6975">
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>
@@ -32,8 +31,14 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </Label>
+                        <Region prefHeight="10.0" prefWidth="328.0" />
+                        <Label alignment="CENTER" text="21127243 - Phùng Siêu Đạt">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="lookup_slang_pane" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" visible="false">
@@ -112,7 +117,8 @@
                         <Region prefHeight="20.0" prefWidth="314.0" />
                         <TableView fx:id="history_table" prefHeight="285.0" prefWidth="420.0">
                            <columns>
-                              <TableColumn fx:id="history_col" prefWidth="325.6000518798828" text="Searched Slang" />
+                              <TableColumn fx:id="history_col" prefWidth="154.4000610113144" text="Searched Slang" />
+                              <TableColumn fx:id="timestamp_col" prefWidth="263.99993896484375" text="Timestamp" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

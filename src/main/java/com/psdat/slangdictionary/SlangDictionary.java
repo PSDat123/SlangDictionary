@@ -1,5 +1,9 @@
 package com.psdat.slangdictionary;
 
+import javafx.util.Pair;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
@@ -8,7 +12,7 @@ public class SlangDictionary {
     public static String DEFAULT_DATA_FILE = "./assets/slang.txt";
     public static String DEFAULT_HISTORY_FILE = "./assets/history.txt";
     private TreeMap<String, Set<String>> dictionary;
-    private final Deque<String> history = new LinkedList<>();
+    private final Deque<Pair<String, String>> history = new LinkedList<>();
     private String dataFile, historyFile;
     public SlangDictionary() {
         this(DEFAULT_DATA_FILE, DEFAULT_HISTORY_FILE);
@@ -51,9 +55,9 @@ public class SlangDictionary {
         try(BufferedReader reader = new BufferedReader(new FileReader(historyFile))){
             String line;
             while((line = reader.readLine()) != null){
-                line = line.trim();
-                if (!line.isEmpty()) {
-                    history.addLast(line.trim());
+                String[] hist = line.trim().split("\\s*\\|\\s*", 2);
+                if (hist.length == 2) {
+                    history.addLast(new Pair<>(hist[0], hist[1]));
                 }
             }
             reader.close();
@@ -81,8 +85,8 @@ public class SlangDictionary {
     }
     public void saveHistory(){
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(historyFile))){
-            for (String item : history){
-                writer.write(item);
+            for (Pair<String,String> item : history){
+                writer.write(item.getKey() + " | " + item.getValue());
                 writer.newLine();
             }
             writer.close();
@@ -100,7 +104,9 @@ public class SlangDictionary {
             if (history.size() > 50) {
                 history.removeLast();
             }
-            history.addFirst(slang);
+            DateFormat df = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+            String date = df.format(new Date());
+            history.addFirst(new Pair<>(slang, date));
             saveHistory();
         }
         if (dictionary.containsKey(slang)) {
@@ -238,7 +244,7 @@ public class SlangDictionary {
         quiz.shuffle();
         return quiz;
     }
-    public List<String> getHistory() {
+    public List<Pair<String,String>> getHistory() {
         return new ArrayList<>(history);
     }
 

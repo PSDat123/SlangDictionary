@@ -1,14 +1,14 @@
 package com.psdat.slangdictionary;
-
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.ActionEvent;
 import javafx.scene.paint.Color;
-
+import javafx.util.Pair;
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -75,10 +75,11 @@ public class SlangController {
 
     // History
     @FXML
-    private TableView<String> history_table;
+    private TableView<Pair<String, String>> history_table;
     @FXML
-    private TableColumn<String, String> history_col;
-
+    private TableColumn<Pair<String, String>, String> history_col;
+    @FXML
+    private TableColumn<Pair<String, String>, String> timestamp_col;
     // Add New Slang
     @FXML
     private TextField add_slang_inp_slang;
@@ -127,17 +128,19 @@ public class SlangController {
     private SlangQuiz currentSlangQuiz = null;
     private SlangQuiz currentDefQuiz = null;
     private SlangDictionary dict;
-    public void initialize() throws IOException {
+    public void initialize() {
         dict = new SlangDictionary();
         updateHistory();
     }
 
     private void updateHistory() {
-        history_col.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
-        history_table.getItems().setAll(dict.getHistory());
+        history_col.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getKey()));
+        timestamp_col.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getValue()));
+        ObservableList<Pair<String, String>> items = FXCollections.observableArrayList(dict.getHistory());
+        history_table.setItems(items);
     }
     @FXML
-    public void changePane(ActionEvent actionEvent) throws IOException {
+    public void changePane(ActionEvent actionEvent) {
         title_pane.setVisible(false);
         lookup_slang_pane.setVisible(false);
         lookup_def_pane.setVisible(false);
